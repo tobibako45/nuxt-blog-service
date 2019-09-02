@@ -17,7 +17,13 @@
 
 <script>
     export default {
+        // 入力される値の型チェック、未入力チェック（バリデーション）とかにcomputed。
         computed: {
+
+            // 両方同じ
+            // showPosts: function() {
+
+            // こうも書ける
             showPosts() {
                 return [
                     {
