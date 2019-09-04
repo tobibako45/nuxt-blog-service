@@ -1,4 +1,3 @@
-// state: コンポーネントでいうdata
 export const state = () => ({
   isLoggedIn: false,
   user: null
@@ -35,7 +34,11 @@ export const actions = {
   async login({commit}, {id}) {
     // async awaitは非同期処理をする関数がもともとあって、それを同期処理にしたい場合につかう。
     // await は axiosの処理が終わるまで処理を待っててくれる
-    const user = await this.$axios.$get('/users/${id}.json')
+
+    // modulesで'@nuxtjs/axios'を設定してるので、$axios,$getとかで呼ぶ。nuxt.config.jsに書いてる
+    // const axios = require('axios');とかで読み込むと、axios,getとかで呼ぶ？
+    const user = await this.$axios.$get(`/users/${id}.json`)
+
     // ser.idがなければError
     if (!user.id) throw new Error('Invalid user')
     // mutationsのsetUserをcommit
@@ -44,8 +47,8 @@ export const actions = {
   async register({commit}, {id}) {
     const payload = {}
     payload[id] = {id}
-    await this.$axios.$get('/users.json', payload)
-    const user = await this.$axios.$get('/users/${id}.json')
+    await this.$axios.$patch('/users.json', payload)
+    const user = await this.$axios.$get(`/users/${id}.json`)
     if (!user.id) throw new Error('Invalid user')
     commit('setUser', {user})
   }
