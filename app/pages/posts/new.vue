@@ -40,7 +40,7 @@
             ...mapGetters(['user'])
         },
         methods: {
-            publish() {
+            async publish() {
 
             }
         }
