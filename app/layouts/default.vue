@@ -1,20 +1,20 @@
 <template>
   <div>
-    <TheHeader/>
+    <TheHeader />
     <div class="wrapper">
       <div class="container">
-        <nuxt class="container"/>
+        <nuxt class="container" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-    import TheHeader from "../components/TheHeader";
+import TheHeader from "../components/TheHeader";
 
-    export default {
-        components: {
-            TheHeader
-        }
-    }
+export default {
+  components: {
+    TheHeader
+  }
+};
 </script>
